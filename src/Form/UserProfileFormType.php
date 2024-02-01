@@ -77,7 +77,7 @@ class UserProfileFormType extends AbstractType
             ])
             ->add('countryId', EntityType::class, [
                 'class' => Countries::class,
-                'choice_label' => 'name', // Display the country name in the dropdown
+                'choice_label' => 'country_name', // Display the country name in the dropdown
                 'placeholder' => 'Choose your country', // Optional placeholder
                 'required' => true, // Set to false if you want to allow an empty value
                 'label' => 'Country', // Optional label

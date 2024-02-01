@@ -8,5 +8,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 interface UserProfileService
 {
-    public function handleUserProfileForm(UserProfile $userProfile, FormInterface $form, Request $request): bool;
+    public function handleUserProfileForm(UserProfile $userProfile, FormInterface $form, Request $request): array;
+    public function handleChangePassword($user, FormInterface $form, Request $request): array;
 }

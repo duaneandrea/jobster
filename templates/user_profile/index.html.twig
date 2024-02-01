@@ -2,11 +2,6 @@
 
 {% block title %}Jobster Portal - {{ profile.firstName }} {{ profile.lastName }}{% endblock %}
 {% block stylesheets %}
-    <style>
-        .top-space{
-            margin-top: 100px;
-        }
-    </style>
 {% endblock %}
 {% block body %}
     <div class="container-fluid">
@@ -25,6 +20,13 @@
                                             <h4>My Profile</h4>
                                         </div>
                                         <div class="widget-content">
+                                            {% if response|length > 0 %}
+                                                {% if response.res == false %}
+                                                    <div class="alert alert-danger  txt-small">{{ response.msg }}</div>
+                                                {% else %}
+                                                    <div class="alert alert-success  txt-small">{{ response.msg }}</div>
+                                                {% endif %}
+                                            {% endif %}
                                             {{ form_start(form, {'attr': {'class': 'default-form'}}) }}
                                             <div class="row">
                                                 <!-- Input -->

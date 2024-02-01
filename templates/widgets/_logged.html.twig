@@ -17,7 +17,7 @@
                       <ul>
                         <li><a href="{{ path('app_user_profile') }}"><span>My Profile</span></a></li>
                         <li><a href=""><span>My Dashboard</span></a></li>
-                        <li><a href=""><span>Change Password</span></a></li>
+                        <li><a href="{{ path('app_change_password') }}"><span>Change Password</span></a></li>
                         {% if is_granted('ROLE_ADMIN') %}
                           <li><a href=""><span>Admin Dashboard</span></a></li>
                         {% endif %}
