@@ -15,7 +15,7 @@
                     <li><a href="{{path('app_contact_us')}}">Contact Us</a></li>
                     <li class="dropdown">
                       <ul>
-                        <li><a href=""><span>My Profile</span></a></li>
+                        <li><a href="{{ path('app_user_profile') }}"><span>My Profile</span></a></li>
                         <li><a href=""><span>My Dashboard</span></a></li>
                         <li><a href=""><span>Change Password</span></a></li>
                         {% if is_granted('ROLE_ADMIN') %}
