@@ -41,5 +41,11 @@ class UserProfileController extends AbstractController
             'form_errors' => $formErrors,
         ]);
     }
+
+    #[Route('/user/password', name:'app_change_password')]
+    public function changePassword(Request $request): Response{
+        //get current user
+        
+    }
 }
 ?>
