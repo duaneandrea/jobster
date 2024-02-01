@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Entity\Countries;
-use App\Entity\User;
 use App\Entity\UserProfile;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
