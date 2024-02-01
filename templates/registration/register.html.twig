@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jobster Portal - Create Account{% endblock %}
+{% block stylesheets %}
+    <style>
+        .registration-text-input{
+            position: relative;
+            width: 100%;
+            display: block;
+            height: 60px;
+            line-height: 30px;
+            padding: 15px 20px;
+            font-size: 15px;
+            color: #696969;
+            background: #F0F5F7;
+            border: 1px solid #F0F5F7;
+            box-sizing: border-box;
+            border-radius: 8px;
+            transition: all 300ms ease;
+            margin-bottom: 20px;
+        }
+
+        .registration-button{
+            position: relative;
+            text-align: center;
+            white-space: nowrap;
+            color: #ffffff;
+            background-color: #1967D2;
+            font-size: 15px;
+            line-height: 20px;
+            border-radius: 8px;
+            font-weight: 400;
+            padding: 18px 35px 15px 35px;
+            width: 100%;
+        }
+
+        .agree-terms{
+            margin-bottom: 20px;
+            font-weight: 900;
+            display: inline-block;
+            cursor: pointer;
+            position: relative;
+            padding-left: 28px;
+            font-size: 15px;
+            line-height: 20px;
+            color: #696969;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+    <div class="login-section">
+        <div class="image-layer" style="background-image: url(assets/images/background/12.jpg); margin-top:70px;"></div>
+        <div class="outer-box">
+            <div class="login-form default-form">
+                <div class="form-inner">
+                    <h3>Create An Account</h3>
+                    {% if form_errors is not empty %}
+                        {% for each_error in form_errors %}
+                            <div class="alert alert-danger txt-small">{{ each_error }}</div>
+                        {% endfor %}
+                    {% endif %}
+
+                    {{ form_start(registrationForm) }}
+                    {{ form_row(registrationForm.email) }}
+                    {{ form_row(registrationForm.plainPassword, {
+                        label: 'Password'
+                    }) }}
+                    {{ form_row(registrationForm.conPassword, {
+                        label: 'Confirm Password'
+                    }) }}
+
+                    <div class="form-group">
+                        <input type="checkbox" class="agree-terms" name="terms_agree" required>
+                        <label for="terms_agree">I agree to the terms and conditions:</label>
+                        <a href="#">Terms and Conditions</a>
+                    </div>
+
+                    <button type="submit" class="registration-button">Register</button>
+                    {{ form_end(registrationForm) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block footer %}{% endblock %}
