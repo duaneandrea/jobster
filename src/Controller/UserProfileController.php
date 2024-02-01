@@ -5,7 +5,7 @@ use App\Entity\User;
 use App\Entity\UserProfile;
 use App\Form\ChangePasswordFormType;
 use App\Form\UserProfileFormType;
-use App\Service\UserProfileService;
+use App\Service\UserProfileServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,9 +14,9 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class UserProfileController extends AbstractController
 {
-    private UserProfileService $userProfileService;
+    private UserProfileServiceInterface $userProfileService;
 
-    public function __construct(UserProfileService $userProfileService, private EntityManagerInterface $entityManager)
+    public function __construct(UserProfileServiceInterface $userProfileService, private EntityManagerInterface $entityManager)
     {
         $this->userProfileService = $userProfileService;
     }

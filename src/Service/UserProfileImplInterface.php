@@ -2,14 +2,13 @@
 
 namespace App\Service;
 
-use App\Entity\User;
 use App\Entity\UserProfile;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-class UserProfileImpl implements UserProfileService
+class UserProfileImplInterface implements UserProfileServiceInterface
 {
     private EntityManagerInterface $entityManager;
 
@@ -45,36 +44,30 @@ class UserProfileImpl implements UserProfileService
             $conNewPassword = $form->getData()['conNewPassword'];
 
             if(!$this->passwordHasher->isPasswordValid($user,$currentPassword)){
-                $returnArray =
-                    [
+                return[
                         'res'=>false,
                         'msg'=>"The current password you have entered in incorrect."
                     ];
-                return $returnArray;
             }else if($newPassword !== $conNewPassword){
-                $returnArray =
-                    [
+                return[
                         'res'=>false,
                         'msg'=>"The new passwords do not match"
                     ];
-                return $returnArray;
             }else{
                 $hashedPassword = $this->passwordHasher->hashPassword($user,$newPassword);
                 $user->setPassword($hashedPassword);
                 $this->entityManager->persist($user);
                 $this->entityManager->flush();
 
-                $returnArray =
-                    [
+                return[
                         'res'=>true,
                         'msg'=>"The password was updated successfully"
                     ];
-                return $returnArray;
             }
 
 
         }
 
-        return $returnArray;
+        return [];
     }
 }
