@@ -3,7 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        
+        <link rel="shortcut icon" href="https://i.ibb.co/NZDtJdJ/jobster-logo.png" type="image/png">
+        <link href="assets/css/bootstrap.css" rel="stylesheet">
+        <link href="assets/css/style.css" rel="stylesheet">
+        <link href="assets/css/responsive.css" rel="stylesheet">
         {% block stylesheets %}
         {% endblock %}
 
@@ -11,7 +14,32 @@
 {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
-    <body>
+    {% if app.user %}
+        {% include "widgets/_logged.html.twig" %}
+    {% else%}
+        {% include "widgets/_unlogged.html.twig" %}
+    {% endif %}
+    <body data-anm=".anm">
         {% block body %}{% endblock %}
     </body>
+    <div>
+        {% block footer %}
+        {% include "widgets/_footer.html.twig" %}
+        {% endblock %}
+    </div>
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/chosen.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.fancybox.js"></script>
+    <script src="assets/js/jquery.modal.min.js"></script>
+    <script src="assets/js/mmenu.polyfills.js"></script>
+    <script src="assets/js/mmenu.js"></script>
+    <script src="assets/js/appear.js"></script>
+    <script src="assets/js/anm.min.js"></script>
+    <script src="assets/js/ScrollMagic.min.js"></script>
+    <script src="assets/js/rellax.min.js"></script>
+    <script src="assets/js/owl.js"></script>
+    <script src="assets/js/wow.js"></script>
+    <script src="assets/js/script.js"></script>
 </html>

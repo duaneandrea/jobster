@@ -1,0 +1,53 @@
+        <!-- Main Header-->
+        <header class="main-header alternate">
+          <div class="auto-container">
+            <!-- Main box -->
+            <div class="main-box">
+              <!--Nav Outer -->
+              <div class="nav-outer">
+                <div class="logo-box">
+                  <div class="logo"><a href="{{path('app_home')}}"><img src="https://i.ibb.co/WHxgPdP/jobster-icon.png" style="width:100px;" alt="Jobster Logo" title="Jobster Logo"></a></div>
+                </div>
+
+                <nav class="nav main-menu">
+                  <ul class="navigation" id="navbar">
+                    <li><a href="{{path('app_home')}}">Home</a></li>
+                    <li><a href="{{path('app_contact_us')}}">Contact Us</a></li>
+                    <li class="dropdown">
+                      <ul>
+                        <li><a href=""><span>My Profile</span></a></li>
+                        <li><a href=""><span>My Dashboard</span></a></li>
+                        <li><a href=""><span>Change Password</span></a></li>
+                        {% if is_granted('ROLE_ADMIN') %}
+                          <li><a href=""><span>Admin Dashboard</span></a></li>
+                        {% endif %}
+                        {% if is_granted('ROLE_RECRUITER') %}
+                          <li><a href=""><span>Recruiter Dashboard</span></a></li>
+                        {% endif %}
+                        <li><a href="{{path('app_logout')}}"><span>Logout</span></a></li>
+                      </ul>
+                      <span>Profile</span>
+                    </li>
+                  </ul>
+                </nav>
+                <!-- Main Menu End-->
+              </div>
+            </div>
+          </div>
+          <!-- Mobile Header -->
+          <div class="mobile-header">
+            <div class="logo"><a href="{{path('app_home')}}"><img src="https://i.ibb.co/WHxgPdP/jobster-icon.png" style="width:100px;" alt="Jobster Icon" title="Jobster Icon"></a></div>
+
+            <!--Nav Box-->
+            <div class="nav-outer clearfix">
+
+              <div class="outer-box">
+                <a href="#nav-mobile" class="mobile-nav-toggler navbar-trigger"><span class="flaticon-menu-1"></span></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mobile Nav -->
+          <div id="nav-mobile"></div>
+        </header>
+        <!--End Main Header -->
