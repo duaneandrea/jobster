@@ -260,9 +260,6 @@
             "templates/base.html.twig"
         ]
     },
-    "symfony/ux-turbo": {
-        "version": "v2.14.0"
-    },
     "symfony/validator": {
         "version": "7.0",
         "recipe": {
@@ -287,6 +284,9 @@
             "config/packages/web_profiler.yaml",
             "config/routes/web_profiler.yaml"
         ]
+    },
+    "symfonycasts/verify-email-bundle": {
+        "version": "v1.16.1"
     },
     "twig/extra-bundle": {
         "version": "v3.8.0"
