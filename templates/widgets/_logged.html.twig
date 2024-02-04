@@ -12,6 +12,10 @@
                 <nav class="nav main-menu">
                   <ul class="navigation" id="navbar">
                     <li><a href="{{path('app_home')}}">Home</a></li>
+                    <li><a href="{{path('app_jobs')}}">Jobs</a></li>
+                    {% if is_granted('ROLE_RECRUITER') %}
+                      <li><a href="">Candidates</a></li>
+                    {% endif %}
                     <li><a href="{{path('app_contact_us')}}">Contact Us</a></li>
                     <li class="dropdown">
                       <ul>

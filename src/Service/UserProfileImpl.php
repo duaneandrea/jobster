@@ -8,7 +8,7 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-class UserProfileImplInterface implements UserProfileServiceInterface
+class UserProfileImpl implements UserProfileServiceInterface
 {
     private EntityManagerInterface $entityManager;
 

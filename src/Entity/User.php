@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -31,6 +33,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\OneToOne(inversedBy: 'userId', cascade: ['persist', 'remove'])]
     private ?UserProfile $userProfileId = null;
+
+    #[ORM\OneToMany(mappedBy: 'jobOwner', targetEntity: Job::class)]
+    private Collection $yes;
+
+    public function __construct()
+    {
+        $this->yes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -110,6 +120,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setUserProfileId(?UserProfile $userProfileId): static
     {
         $this->userProfileId = $userProfileId;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Job>
+     */
+    public function getYes(): Collection
+    {
+        return $this->yes;
+    }
+
+    public function addYe(Job $ye): static
+    {
+        if (!$this->yes->contains($ye)) {
+            $this->yes->add($ye);
+            $ye->setJobOwner($this);
+        }
+
+        return $this;
+    }
+
+    public function removeYe(Job $ye): static
+    {
+        if ($this->yes->removeElement($ye)) {
+            // set the owning side to null (unless already changed)
+            if ($ye->getJobOwner() === $this) {
+                $ye->setJobOwner(null);
+            }
+        }
 
         return $this;
     }

@@ -22,6 +22,7 @@ class UserFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $faker = Factory::create();
+        
         $user = new User();
         $country = $this->countriesRepository->find(239);
         $user->setEmail(strtolower($faker->email));

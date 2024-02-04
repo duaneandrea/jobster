@@ -1,0 +1,123 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jobster Portal - {{ jobs.jobTitle }}{% endblock %}
+
+{% block body %}
+    <!-- Job Detail Section -->
+    <section class="job-detail-section">
+        <div class="job-detail-outer">
+            <div class="auto-container">
+                <div class="row"  style="margin-top: 50px;">
+                    <div class="content-column col-lg-8 col-md-12 col-sm-12">
+                        <div class="job-block-outer">
+                            <!-- Job Block -->
+                            <div class="job-block-seven">
+                                <div class="inner-box">
+                                    <div class="content">
+                                        <span class="company-logo"><img src="{{ app.request.getSchemeAndHttpHost() }}/assets/images/resource/company-logo/5-1.png" alt=""></span>
+                                        <h4><a href="#">{{ jobs.jobTitle }}</a></h4>
+                                        <ul class="job-info">
+                                            <a href=""><li><span class="icon flaticon-user-1"></span> {{ jobs.jobOwner.userProfileId.firstName }} {{ jobs.jobOwner.userProfileId.lastName }}</li></a>
+                                            <li><span class="icon flaticon-map-locator"></span> {{ jobs.country.countryName }}</li>
+                                            <li><span class="icon flaticon-clock-3"></span> {{ jobs.dateCreated|date('d F Y') }}</li>
+                                            <li><span class="icon flaticon-money"></span> {{ jobs.salaryRange }}</li>
+                                        </ul>
+                                        <ul class="job-other-info">
+                                            <li class="time">{{ jobs.jobType }}</li>
+                                            <li class="privacy">{{ jobs.experienceLevel }}</li>
+                                            <li class="required">{{ jobs.location }}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="job-detail">
+                            <h4>Job Description</h4>
+                            <p>{{ jobs.jobDescription }}</p>
+
+                        </div>
+
+                        <!-- Other Options -->
+                        <div class="other-options">
+                            <div class="social-share">
+                                <h5>Share this job</h5>
+                                <a href="#" class="facebook"><i class="fab fa-facebook-f"></i> Facebook</a>
+                                <a href="#" class="twitter"><i class="fab fa-twitter"></i> Twitter</a>
+                                <a href="#" class="linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-column col-lg-4 col-md-12 col-sm-12">
+                        <aside class="sidebar">
+                            <div class="btn-box">
+                                <a href="#" class="theme-btn btn-style-one">Apply For Job</a>
+                                <button class="bookmark-btn"><i class="flaticon-bookmark"></i></button>
+                            </div>
+
+                            <div class="sidebar-widget">
+                                <!-- Job Overview -->
+                                <h4 class="widget-title">Job Overview</h4>
+                                <div class="widget-content">
+                                    <ul class="job-overview">
+                                        <li>
+                                            <i class="icon icon-calendar"></i>
+                                            <h5>Date Posted:</h5>
+                                            <span>{{ jobs.dateCreated|date('d F Y') }}</span>
+                                        </li>
+                                        <li>
+                                            <i class="icon icon-expiry"></i>
+                                            <h5>Expiration date:</h5>
+                                            <span>{{ jobs.applicationDeadline|date('d F Y') }}</span>
+                                        </li>
+                                        <li>
+                                            <i class="icon icon-location"></i>
+                                            <h5>Location:</h5>
+                                            <span>{{ jobs.country.countryName }}</span>
+                                        </li>
+                                        <li>
+                                            <i class="icon icon-user-2"></i>
+                                            <h5>Job Title:</h5>
+                                            <span>{{ jobs.jobTitle }}</span>
+                                        </li>
+                                        <li>
+                                            <i class="icon icon-clock"></i>
+                                            <h5>Hours:</h5>
+                                            <span>40h / week</span>
+                                        </li>
+                                        <li>
+                                            <i class="icon icon-salary"></i>
+                                            <h5>Salary:</h5>
+                                            <span>{{ jobs.salaryRange }}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- Job Skills -->
+                                <h4 class="widget-title">Job Skills</h4>
+                                <div class="widget-content">
+                                    <ul class="job-skills">
+                                        {% for singleSkill in skills %}
+                                            <li><a href="javascript:void()">{{ singleSkill }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="sidebar-widget company-widget">
+                                <div class="widget-content">
+                                    <div class="company-title">
+                                        <div class="company-logo"><img src="{{ app.request.getSchemeAndHttpHost() }}/assets/images/resource/company-7.png" alt=""></div>
+                                        <h5 class="company-name">{{ jobs.jobOwner.userProfileId.firstName }} {{ jobs.jobOwner.userProfileId.lastName }}</h5>
+                                        <a href="#" class="profile-link">View Job Owner</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Job Detail Section -->
+{% endblock %}
